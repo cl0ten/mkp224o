@@ -35,7 +35,7 @@
 const char * const pkprefix = "== ed25519v1-public: type0 ==\0\0";
 const char * const skprefix = "== ed25519v1-secret: type0 ==\0\0";
 
-static const char checksumstr[] = ".onion checksum";
+static const char checksumstr[] = ".anon checksum";
 #define checksumstrlen (sizeof(checksumstr) - 1) // 15
 
 pthread_mutex_t keysgenerated_mutex;

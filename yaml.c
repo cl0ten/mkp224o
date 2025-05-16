@@ -229,7 +229,7 @@ int yamlin_parseandcreate(
 				if (len != ONION_LEN ||
 					base32_valid(p,&cnt) ||
 					cnt != BASE32_TO_LEN(PUBONION_LEN) ||
-					strcmp(&p[cnt],".onion") != 0)
+					strcmp(&p[cnt],".anon") != 0)
 				{
 					fprintf(stderr,"ERROR: invalid hostname syntax\n");
 					return 1;

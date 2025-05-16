@@ -115,7 +115,7 @@ initseed:
 				// version byte
 				pk[PUBLIC_LEN + 2] = 0x03;
 				// full name
-				strcpy(base32_to(&sname[direndpos],pk,PUBONION_LEN),".onion");
+				strcpy(base32_to(&sname[direndpos],pk,PUBONION_LEN),".anon");
 				onionready(sname,secret,pubonion.raw,seednear && pw_warnnear);
 				pk[PUBLIC_LEN] = 0; // what is this for?
 
@@ -187,7 +187,7 @@ initseed:
 				// version byte
 				pk[PUBLIC_LEN + 2] = 0x03;
 				// full name
-				strcpy(base32_to(&sname[direndpos],pk,PUBONION_LEN),".onion");
+				strcpy(base32_to(&sname[direndpos],pk,PUBONION_LEN),".anon");
 				onionready(sname,secret,pubonion.raw,seednear && pw_warnnear);
 				pk[PUBLIC_LEN] = 0; // what is this for?
 

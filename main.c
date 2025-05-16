@@ -52,8 +52,8 @@ static int wantdedup = 0;
 // 0, direndpos, onionendpos
 // printstartpos = either 0 or direndpos
 // printlen      = either onionendpos + 1 or ONION_LEN + 1 (additional 1 is for newline)
-size_t onionendpos;   // end of .onion within string
-size_t direndpos;     // end of dir before .onion within string
+size_t onionendpos;   // end of .anon within string
+size_t direndpos;     // end of dir before .anon within string
 size_t printstartpos; // where to start printing from
 size_t printlen;      // precalculated, related to printstartpos
 
@@ -99,11 +99,11 @@ static void printhelp(FILE *out,const char *progname)
 		"                        by newlines.\n"
 		"  -D                    deduplicate filters.\n"
 		"  -q                    do not print diagnostic output to stderr.\n"
-		"  -x                    do not print onion names.\n"
+		"  -x                    do not print anon names.\n"
 		"  -v                    print more diagnostic data.\n"
-		"  -o FILENAME           output onion names to specified file (append).\n"
-		"  -O FILENAME           output onion names to specified file (overwrite).\n"
-		"  -F                    include directory names in onion names output.\n"
+		"  -o FILENAME           output anon names to specified file (append).\n"
+		"  -O FILENAME           output anon names to specified file (overwrite).\n"
+		"  -F                    include directory names in anon names output.\n"
 		"  -d DIRNAME            output directory.\n"
 		"  -t NUMTHREADS         specify number of threads to utilise\n"
 		"                        (default - try detecting CPU core count).\n"
@@ -118,7 +118,7 @@ static void printhelp(FILE *out,const char *progname)
 		"  -T                    do not reset statistics counters when printing.\n"
 		"  -y                    output generated keys in YAML format instead of\n"
 		"                        dumping them to filesystem.\n"
-		"  -Y [FILENAME [host.onion]]\n"
+		"  -Y [FILENAME [host.anon]]\n"
 		"                        parse YAML encoded input and extract key(s) to\n"
 		"                        filesystem.\n"
 #ifdef PASSPHRASE
