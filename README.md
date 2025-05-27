@@ -69,7 +69,7 @@ performance-related tips.
   to where you want your service keys to reside:
 
   ```bash
-  sudo cp -r test54as6d54....anon /var/lib/anon/hidden_service
+  sudo cp test54as6d54....anon/* /var/lib/anon/hidden_service
   ```
 
   You may need to adjust ownership and permissions:
