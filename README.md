@@ -1,4 +1,4 @@
-## mkp224o - vanity address generator for ed25519 onion services
+## mkp224o - vanity address generator for ed25519 anon hidden services
 
 This tool generates vanity ed25519 (hidden service version 3[^1][^2],
 formely known as proposal 224) onion addresses.
@@ -54,36 +54,33 @@ performance-related tips.
 
 * How do I generate address?
 
-  Once compiled, run it like `./mkp224o neko`, and it will try creating
-  keys for onions starting with "neko" in this example; use `./mkp224o
-  -d nekokeys neko` to not litter current directory and put all
-  discovered keys in directory named "nekokeys".
+  Once compiled, run it like `./mkp224o test`, and it will try creating
+  keys for onions starting with "test" in this example; use `./mkp224o
+  -d hs_keys test` to not litter current directory and put all
+  discovered keys in directory named "hs_keys".
 
-* How do I make tor use generated keys?
+  If no files are generated use the `./mkp224o -y` to show the private and public keys in yaml format.
+  Then use [yaml2hs](https://github.com/cl0ten/yaml2hs) python script to convert the base64 strings to key files.
 
-  Copy key folder (though technically only `hs_ed25519_secret_key` is required)
+
+* How do I make anon use generated keys?
+
+  Copy the keys to the hidden service folder (though technically only `hs_ed25519_secret_key` is required)
   to where you want your service keys to reside:
 
   ```bash
-  sudo cp -r neko54as6d54....onion /var/lib/tor/nekosvc
+  sudo cp -r test54as6d54....anon /var/lib/anon/hidden_service
   ```
 
   You may need to adjust ownership and permissions:
 
   ```bash
-  sudo chown -R tor: /var/lib/tor/nekosvc
-  sudo chmod -R u+rwX,og-rwx /var/lib/tor/nekosvc
+  sudo chown -R anon: /var/lib/anon/hidden_service
+  sudo chmod -R u+rwX,og-rwx /var/lib/anon/hidden_service
   ```
 
-  Then edit `torrc` and add new service with that folder.\
-  After reload/restart tor should pick it up.
-
-* How to generate addresses with `0-1` and `8-9` digits?
-
-  Onion addresses use base32 encoding which does not include `0,1,8,9`
-  numbers.\
-  So no, that's not possible to generate these, and mkp224o tries to
-  detect invalid filters containing them early on.
+  Then edit `anonrc` and add new service with that folder.\
+  After reload/restart anon should pick it up.
 
 * How long is it going to take?
 
@@ -105,12 +102,7 @@ performance-related tips.
 
 * Is there a docker image?
 
-  Yes, if you do not wish to compile mkp224o yourself, you can use
-  the `ghcr.io/cathugger/mkp224o` image like so:
-
-  ```bash
-  docker run --rm -it -v $PWD:/keys ghcr.io/cathugger/mkp224o:master -d /keys neko
-  ```
+  No, not for this fork
 
 ### Acknowledgements & Legal
 
@@ -120,6 +112,8 @@ public domain worldwide. This software is distributed without any
 warranty.
 You should have received a copy of the CC0 Public Domain Dedication
 along with this software. If not, see [CC0][].
+
+* The whole fork is based on the original https://github.com/cathugger/mkp224o
 
 * `keccak.c` is based on [Keccak-more-compact.c][keccak.c]
 * `ed25519/{ref10,amd64-51-30k,amd64-64-24k}` are adopted from
